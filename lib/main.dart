@@ -1,3 +1,4 @@
+import 'package:flop_shop/providers/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flop_shop/providers/products.dart';
@@ -9,8 +10,13 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => Products(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => Products(),
+        ),
+        ChangeNotifierProvider(create: (_) => Cart()),
+      ],
       // value: Products(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
