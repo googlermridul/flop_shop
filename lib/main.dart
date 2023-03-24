@@ -1,4 +1,5 @@
 import 'package:flop_shop/providers/cart.dart';
+import 'package:flop_shop/screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flop_shop/providers/products.dart';
@@ -15,7 +16,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => Products(),
         ),
-        ChangeNotifierProvider(create: (_) => Cart()),
+        ChangeNotifierProvider(
+          create: (_) => Cart(),
+        ),
       ],
       // value: Products(),
       child: MaterialApp(
@@ -28,6 +31,7 @@ class MyApp extends StatelessWidget {
         home: ProductsOverviewScreen(),
         routes: {
           ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          CartScreen.routeName: (ctx) => CartScreen(),
         },
       ),
     );

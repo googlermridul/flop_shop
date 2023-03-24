@@ -1,5 +1,8 @@
+import 'package:flop_shop/providers/cart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/products_grid.dart';
+import '../screens/cart_screen.dart';
 
 enum FilterOptions {
   favorites,
@@ -52,7 +55,21 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               ),
             ],
             icon: Icon(Icons.more_vert),
-          )
+          ),
+          Consumer<Cart>(
+            builder: (_, cart, ch) => Badge(
+              child: ch,
+              label: Text(cart.itemCount.toString()),
+            ),
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              icon: Icon(
+                Icons.shopping_cart_outlined,
+              ),
+            ),
+          ),
         ],
       ),
       body: ProductsGrid(_showOnlyFavorites),
