@@ -1,4 +1,5 @@
 import 'package:flop_shop/providers/cart.dart';
+import 'package:flop_shop/providers/order.dart';
 import 'package:flop_shop/screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => Cart(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Orders(),
         ),
       ],
       // value: Products(),
