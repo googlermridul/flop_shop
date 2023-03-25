@@ -1,4 +1,5 @@
 import 'package:flop_shop/screens/orders_screen.dart';
+import 'package:flop_shop/screens/user_products_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -37,6 +38,18 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(OrdersScreen.routeName);
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.edit_note_rounded),
+            title: Text(
+              "Manage Products",
+              style: TextStyle(fontFamily: "Goldman"),
+            ),
+            onTap: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(UserProductsScreen.routeName);
             },
           )
         ],
