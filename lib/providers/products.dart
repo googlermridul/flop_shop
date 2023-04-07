@@ -25,7 +25,7 @@ class Products with ChangeNotifier {
       description: 'Warm and cozy - exactly what you need for the winter.',
       price: 19.99,
       imageUrl:
-          'https://inventstore.in/wp-content/uploads/2022/09/Watch-S8-Silver.png',
+          'https://www.citypng.com/public/uploads/small/11662630709bkutgtwlwvxrtjk7mcinmilyuky4a01mhyyh4myfygdd5jvsfjb9yahwqoa9dnq1tqc4q3edvsp48zgpwjcjbfkjdq9r0su35dzr.png',
     ),
     Product(
       id: 'p4',
@@ -64,7 +64,31 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  void addProduct() {
+  void addProduct(Product product) {
+    final newProduct = Product(
+      id: DateTime.now().toString(),
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      imageUrl: product.imageUrl,
+    );
+    _items.add(newProduct);
+    // _items.insert(0, newProduct);
+    notifyListeners();
+  }
+
+  void updateProduct(String id, Product newProduct) {
+    final index = _items.indexWhere((element) => element.id == id);
+    if (index >= 0) {
+      _items[index] = newProduct;
+      notifyListeners();
+    } else {
+      print("...");
+    }
+  }
+
+  void deleteProduct(String id) {
+    _items.removeWhere((element) => element.id == id);
     notifyListeners();
   }
 }
